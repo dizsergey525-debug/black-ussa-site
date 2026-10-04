@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BLACK USA SERVER</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#0b1020;color:#f4f7ff;
+font-family:Arial,sans-serif}
+header{display:flex;justify-content:space-between;
+align-items:center;padding:16px 5%;border-bottom:1px solid #202c45}
+.logo{font-size:19px;font-weight:900;letter-spacing:1px}
+.logo span{color:#438cff}
+nav{display:flex;gap:18px;align-items:center}
+a{color:#b9c7df;text-decoration:none;font-size:14px}
+button{border:0;border-radius:10px;padding:12px 16px;
+font-weight:bold;cursor:pointer}
+.primary{background:#2676f5;color:white}
+.secondary{background:#1a2740;color:#e6edff}
+main{width:min(900px,92%);margin:35px auto}
+.hero{padding:30px 24px;border:1px solid #233e6e;
+border-radius:22px;background:linear-gradient(140deg,#14284b,#10182c)}
+.tag{color:#78aaff;font-size:12px;font-weight:bold;
+letter-spacing:1.5px}
+h1{font-size:clamp(30px,7vw,48px);margin:15px 0}
+p{color:#afbed7;line-height:1.6}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+h2{font-size:21px;margin:28px 0 15px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.card{background:#111b30;border:1px solid #24334f;
+padding:20px;border-radius:16px}
+.emoji{font-size:25px}
+.card h3{margin:12px 0 6px;font-size:17px}
+.card p{font-size:13px;margin:0}
+.plan{margin-top:14px}
+.row{display:flex;justify-content:space-between;
+align-items:center;gap:10px}
+.pill{font-size:11px;color:#83e6ac;background:#143b32;
+padding:6px 9px;border-radius:20px}
+footer{text-align:center;color:#71819e;font-size:12px;
+padding:30px 10px}
+#menu{display:none}
+@media(max-width:560px){
+ nav a{display:none}
+ .grid{grid-template-columns:1fr}
+ main{margin:22px auto}
+ .hero{padding:25px 19px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo"><span>BLACK USA</span> SERVER</div>
+  <nav>
+    <a href="#servers">Серверы</a>
+    <a href="#plans">Тарифы</a>
+    <button class="secondary" onclick="notice('Вход подключим позже')">
+      Войти
+    </button>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="tag">MINECRAFT BEDROCK HOSTING</div>
+    <h1>Твой сервер.<br>Твои правила.</h1>
+    <p>Создавай собственные миры Minecraft Bedrock,
+    играй с друзьями и управляй серверами в одном месте.</p>
+    <div class="actions">
+      <button class="primary" onclick="notice('Создание серверов подключим на следующем этапе')">
+        Создать сервер →
+      </button>
+      <button class="secondary" onclick="document.querySelector('#plans').scrollIntoView({behavior:'smooth'})">
+        Посмотреть тарифы
+      </button>
+    </div>
+  </section>
+
+  <h2 id="servers">Панель управления</h2>
+  <section class="grid">
+    <div class="card">
+      <div class="emoji">🌍</div>
+      <h3>Мои серверы</h3>
+      <p>Создание, запуск и управление игровыми мирами.</p>
+      <br>
+      <button class="secondary" onclick="notice('Сначала подключим аккаунты')">
+        Открыть
+      </button>
+    </div>
+    <div class="card">
+      <div class="emoji">💎</div>
+      <h3>Подписки</h3>
+      <p>Тарифы, история покупок и доступные скидки.</p>
+      <br>
+      <button class="secondary" onclick="document.querySelector('#plans').scrollIntoView({behavior:'smooth'})">
+        Подробнее
+      </button>
+    </div>
+    <div class="card">
+      <div class="emoji">🖥️</div>
+      <h3>Мой ПК как хост</h3>
+      <p>Подключение собственного компьютера для размещения сервера.</p>
+      <br>
+      <button class="secondary" onclick="notice('Программу для ПК разработаем отдельно')">
+        Подключить ПК
+      </button>
+    </div>
+    <div class="card">
+      <div class="emoji">🛡️</div>
+      <h3>Администратор</h3>
+      <p>Защищённая панель управления платформой.</p>
+      <br>
+      <button class="secondary" onclick="notice('Вход администратора подключим через защищённую авторизацию')">
+        Войти
+      </button>
+    </div>
+  </section>
+
+  <h2 id="plans">Тарифы</h2>
+  <section class="card plan">
+    <div class="row">
+      <h3>Бесплатный</h3>
+      <span class="pill">FREE</span>
+    </div>
+    <p>До 12 часов работы, затем ожидание 2 часа
+    перед следующим запуском. Доступность зависит от ресурсов хостинга.</p>
+    <button class="primary" onclick="notice('Бесплатный запуск появится после настройки хостинга')">
+      Выбрать
+    </button>
+  </section>
+  <section class="card plan">
+    <div class="row">
+      <h3>Подписка</h3>
+      <span class="pill">PREMIUM</span>
+    </div>
+    <p>Дополнительные функции управления сервером.
+    Первый месяц — скидка 90%, далее — 10%.
+    На 6-ю покупку — 50%, на 10-ю — 25%.
+    Скидки не суммируются.</p>
+    <button class="primary" onclick="notice('Оплату подключим после настройки тарифов')">
+      Посмотреть подписку
+    </button>
+  </section>
+</main>
+
+<footer>BLACK USA SERVER · Minecraft Bedrock</footer>
+
+<script>
+function notice(message){
+  alert(message);
+}
+</script>
+</body>
+</html>
