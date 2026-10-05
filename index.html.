@@ -1,156 +1,835 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BLACK USA SERVER</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>SERVERHUB — Minecraft Server Platform</title>
+
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:#0b1020;color:#f4f7ff;
-font-family:Arial,sans-serif}
-header{display:flex;justify-content:space-between;
-align-items:center;padding:16px 5%;border-bottom:1px solid #202c45}
-.logo{font-size:19px;font-weight:900;letter-spacing:1px}
-.logo span{color:#438cff}
-nav{display:flex;gap:18px;align-items:center}
-a{color:#b9c7df;text-decoration:none;font-size:14px}
-button{border:0;border-radius:10px;padding:12px 16px;
-font-weight:bold;cursor:pointer}
-.primary{background:#2676f5;color:white}
-.secondary{background:#1a2740;color:#e6edff}
-main{width:min(900px,92%);margin:35px auto}
-.hero{padding:30px 24px;border:1px solid #233e6e;
-border-radius:22px;background:linear-gradient(140deg,#14284b,#10182c)}
-.tag{color:#78aaff;font-size:12px;font-weight:bold;
-letter-spacing:1.5px}
-h1{font-size:clamp(30px,7vw,48px);margin:15px 0}
-p{color:#afbed7;line-height:1.6}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
-h2{font-size:21px;margin:28px 0 15px}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.card{background:#111b30;border:1px solid #24334f;
-padding:20px;border-radius:16px}
-.emoji{font-size:25px}
-.card h3{margin:12px 0 6px;font-size:17px}
-.card p{font-size:13px;margin:0}
-.plan{margin-top:14px}
-.row{display:flex;justify-content:space-between;
-align-items:center;gap:10px}
-.pill{font-size:11px;color:#83e6ac;background:#143b32;
-padding:6px 9px;border-radius:20px}
-footer{text-align:center;color:#71819e;font-size:12px;
-padding:30px 10px}
-#menu{display:none}
-@media(max-width:560px){
- nav a{display:none}
- .grid{grid-template-columns:1fr}
- main{margin:22px auto}
- .hero{padding:25px 19px}
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-behavior:smooth}
+
+body{
+font-family:Arial,sans-serif;
+background:#070b09;
+color:#fff;
+overflow-x:hidden;
+}
+
+body:before{
+content:"";
+position:fixed;
+width:500px;
+height:500px;
+top:-250px;
+left:-180px;
+background:#20e879;
+opacity:.09;
+filter:blur(120px);
+border-radius:50%;
+pointer-events:none;
+}
+
+body:after{
+content:"";
+position:fixed;
+width:450px;
+height:450px;
+right:-220px;
+bottom:-220px;
+background:#20e879;
+opacity:.06;
+filter:blur(120px);
+border-radius:50%;
+pointer-events:none;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+button{
+font-family:inherit;
+cursor:pointer;
+}
+
+header{
+height:68px;
+position:sticky;
+top:0;
+z-index:50;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 6%;
+background:rgba(7,11,9,.88);
+backdrop-filter:blur(15px);
+border-bottom:1px solid #19251f;
+}
+
+.logo{
+font-size:21px;
+font-weight:900;
+letter-spacing:1px;
+}
+
+.logo span{
+color:#35e77d;
+}
+
+nav{
+display:flex;
+gap:25px;
+color:#9ba59f;
+font-size:14px;
+}
+
+nav a:hover{
+color:#35e77d;
+}
+
+.login{
+padding:10px 18px;
+border-radius:10px;
+border:1px solid #294334;
+background:#101612;
+color:#fff;
+font-weight:bold;
+}
+
+.hero{
+min-height:680px;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:90px 20px;
+}
+
+.hero-content{
+max-width:850px;
+}
+
+.badge{
+display:inline-block;
+padding:8px 14px;
+border-radius:30px;
+border:1px solid #275e3d;
+background:#0d1c13;
+color:#51ed8c;
+font-size:13px;
+margin-bottom:25px;
+}
+
+.hero h1{
+font-size:clamp(44px,9vw,82px);
+line-height:.95;
+letter-spacing:-4px;
+font-weight:900;
+margin-bottom:28px;
+}
+
+.green{
+color:#35e77d;
+}
+
+.hero p{
+max-width:680px;
+margin:auto;
+font-size:17px;
+line-height:1.7;
+color:#9ca69f;
+}
+
+.buttons{
+display:flex;
+justify-content:center;
+gap:12px;
+margin-top:34px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:15px 25px;
+border-radius:12px;
+font-weight:900;
+font-size:14px;
+border:0;
+}
+
+.primary{
+background:#31df76;
+color:#061009;
+box-shadow:0 0 30px rgba(49,223,118,.13);
+}
+
+.primary:hover{
+background:#48eb88;
+transform:translateY(-2px);
+}
+
+.secondary{
+background:#101612;
+color:#fff;
+border:1px solid #293a30;
+}
+
+.secondary:hover{
+border-color:#35e77d;
+}
+
+.online{
+margin-top:35px;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:9px;
+font-size:13px;
+color:#77827b;
+}
+
+.dot{
+width:8px;
+height:8px;
+border-radius:50%;
+background:#35e77d;
+box-shadow:0 0 12px #35e77d;
+}
+
+.section{
+max-width:1150px;
+margin:auto;
+padding:90px 6%;
+}
+
+.title{
+text-align:center;
+margin-bottom:45px;
+}
+
+.title h2{
+font-size:35px;
+margin-bottom:12px;
+}
+
+.title p{
+color:#818c85;
+line-height:1.6;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
+}
+
+.card{
+padding:28px;
+border-radius:18px;
+border:1px solid #1b2a21;
+background:linear-gradient(145deg,#101612,#0b100d);
+transition:.25s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+border-color:#2e6545;
+}
+
+.icon{
+width:50px;
+height:50px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:14px;
+background:#11281a;
+font-size:23px;
+margin-bottom:20px;
+}
+
+.card h3{
+font-size:19px;
+margin-bottom:10px;
+}
+
+.card p{
+font-size:14px;
+line-height:1.65;
+color:#849089;
+}
+
+.flow{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:12px;
+margin-top:40px;
+flex-wrap:wrap;
+}
+
+.flow-box{
+width:220px;
+padding:25px 15px;
+text-align:center;
+border:1px solid #213128;
+border-radius:16px;
+background:#0c120e;
+}
+
+.flow-box strong{
+display:block;
+margin-bottom:8px;
+}
+
+.flow-box span{
+font-size:13px;
+color:#758078;
+}
+
+.arrow{
+font-size:24px;
+color:#35e77d;
+}
+
+.pricing{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
+}
+
+.price-card{
+position:relative;
+padding:30px;
+border-radius:20px;
+background:#0d130f;
+border:1px solid #1d2c23;
+}
+
+.price-card.featured{
+border-color:#31d970;
+box-shadow:0 0 35px rgba(49,217,112,.08);
+}
+
+.popular{
+position:absolute;
+top:18px;
+right:18px;
+font-size:10px;
+font-weight:bold;
+padding:6px 9px;
+border-radius:20px;
+background:#19482b;
+color:#55ed8b;
+}
+
+.price-card h3{
+font-size:20px;
+margin-bottom:18px;
+}
+
+.price{
+font-size:34px;
+font-weight:900;
+margin-bottom:23px;
+}
+
+.price small{
+font-size:12px;
+color:#6f7973;
+font-weight:normal;
+}
+
+.features{
+list-style:none;
+margin-bottom:28px;
+}
+
+.features li{
+padding:8px 0;
+font-size:14px;
+color:#aab3ad;
+}
+
+.features li:before{
+content:"✓";
+color:#39e77d;
+font-weight:bold;
+margin-right:9px;
+}
+
+.price-btn{
+width:100%;
+padding:13px;
+border-radius:10px;
+border:1px solid #29382f;
+background:#111713;
+color:#fff;
+font-weight:bold;
+}
+
+.featured .price-btn{
+background:#31df76;
+border:0;
+color:#061009;
+}
+
+.cta{
+max-width:1050px;
+margin:40px auto 90px;
+padding:65px 25px;
+border-radius:25px;
+border:1px solid #244432;
+text-align:center;
+background:radial-gradient(circle,#12351f,#0b110d 60%);
+}
+
+.cta h2{
+font-size:34px;
+margin-bottom:14px;
+}
+
+.cta p{
+color:#8d9891;
+margin-bottom:28px;
+}
+
+footer{
+padding:35px 6%;
+border-top:1px solid #19241e;
+display:flex;
+justify-content:space-between;
+gap:20px;
+color:#68736c;
+font-size:13px;
+}
+
+footer strong{
+color:#dce5df;
+}
+
+@media(max-width:800px){
+
+header{
+padding:0 17px;
+}
+
+nav{
+display:none;
+}
+
+.hero{
+min-height:620px;
+padding:75px 18px;
+}
+
+.hero h1{
+font-size:49px;
+letter-spacing:-2.5px;
+}
+
+.hero p{
+font-size:15px;
+}
+
+.section{
+padding:70px 18px;
+}
+
+.cards,
+.pricing{
+grid-template-columns:1fr;
+}
+
+.title h2{
+font-size:29px;
+}
+
+.flow{
+flex-direction:column;
+}
+
+.flow-box{
+width:100%;
+}
+
+.arrow{
+transform:rotate(90deg);
+}
+
+.cta{
+margin:30px 18px 70px;
+}
+
+.cta h2{
+font-size:28px;
+}
+
+footer{
+padding:30px 18px;
+flex-direction:column;
+}
 }
 </style>
 </head>
+
 <body>
+
 <header>
-  <div class="logo"><span>BLACK USA</span> SERVER</div>
-  <nav>
-    <a href="#servers">Серверы</a>
-    <a href="#plans">Тарифы</a>
-    <button class="secondary" onclick="notice('Вход подключим позже')">
-      Войти
-    </button>
-  </nav>
+
+<div class="logo">
+SERVER<span>HUB</span>
+</div>
+
+<nav>
+<a href="#home">Главная</a>
+<a href="#how">Как работает</a>
+<a href="#plans">Тарифы</a>
+<a href="#about">О сервисе</a>
+</nav>
+
+<button class="login" onclick="showMessage('Авторизация будет подключена следующим обновлением')">
+Войти
+</button>
+
 </header>
 
-<main>
-  <section class="hero">
-    <div class="tag">MINECRAFT BEDROCK HOSTING</div>
-    <h1>Твой сервер.<br>Твои правила.</h1>
-    <p>Создавай собственные миры Minecraft Bedrock,
-    играй с друзьями и управляй серверами в одном месте.</p>
-    <div class="actions">
-      <button class="primary" onclick="notice('Создание серверов подключим на следующем этапе')">
-        Создать сервер →
-      </button>
-      <button class="secondary" onclick="document.querySelector('#plans').scrollIntoView({behavior:'smooth'})">
-        Посмотреть тарифы
-      </button>
-    </div>
-  </section>
 
-  <h2 id="servers">Панель управления</h2>
-  <section class="grid">
-    <div class="card">
-      <div class="emoji">🌍</div>
-      <h3>Мои серверы</h3>
-      <p>Создание, запуск и управление игровыми мирами.</p>
-      <br>
-      <button class="secondary" onclick="notice('Сначала подключим аккаунты')">
-        Открыть
-      </button>
-    </div>
-    <div class="card">
-      <div class="emoji">💎</div>
-      <h3>Подписки</h3>
-      <p>Тарифы, история покупок и доступные скидки.</p>
-      <br>
-      <button class="secondary" onclick="document.querySelector('#plans').scrollIntoView({behavior:'smooth'})">
-        Подробнее
-      </button>
-    </div>
-    <div class="card">
-      <div class="emoji">🖥️</div>
-      <h3>Мой ПК как хост</h3>
-      <p>Подключение собственного компьютера для размещения сервера.</p>
-      <br>
-      <button class="secondary" onclick="notice('Программу для ПК разработаем отдельно')">
-        Подключить ПК
-      </button>
-    </div>
-    <div class="card">
-      <div class="emoji">🛡️</div>
-      <h3>Администратор</h3>
-      <p>Защищённая панель управления платформой.</p>
-      <br>
-      <button class="secondary" onclick="notice('Вход администратора подключим через защищённую авторизацию')">
-        Войти
-      </button>
-    </div>
-  </section>
+<section class="hero" id="home">
 
-  <h2 id="plans">Тарифы</h2>
-  <section class="card plan">
-    <div class="row">
-      <h3>Бесплатный</h3>
-      <span class="pill">FREE</span>
-    </div>
-    <p>До 12 часов работы, затем ожидание 2 часа
-    перед следующим запуском. Доступность зависит от ресурсов хостинга.</p>
-    <button class="primary" onclick="notice('Бесплатный запуск появится после настройки хостинга')">
-      Выбрать
-    </button>
-  </section>
-  <section class="card plan">
-    <div class="row">
-      <h3>Подписка</h3>
-      <span class="pill">PREMIUM</span>
-    </div>
-    <p>Дополнительные функции управления сервером.
-    Первый месяц — скидка 90%, далее — 10%.
-    На 6-ю покупку — 50%, на 10-ю — 25%.
-    Скидки не суммируются.</p>
-    <button class="primary" onclick="notice('Оплату подключим после настройки тарифов')">
-      Посмотреть подписку
-    </button>
-  </section>
-</main>
+<div class="hero-content">
 
-<footer>BLACK USA SERVER · Minecraft Bedrock</footer>
+<div class="badge">
+● Платформа управления Minecraft-серверами
+</div>
+
+<h1>
+Твой сервер.<br>
+<span class="green">Твои правила.</span>
+</h1>
+
+<p>
+Запускай Minecraft-сервер на своём ПК или дополнительном
+телефоне и управляй им через удобную систему SERVERHUB.
+Твои файлы и мир остаются на твоём устройстве.
+</p>
+
+<div class="buttons">
+
+<button class="btn primary"
+onclick="scrollToId('plans')">
+НАЧАТЬ БЕСПЛАТНО
+</button>
+
+<button class="btn secondary"
+onclick="scrollToId('how')">
+КАК ЭТО РАБОТАЕТ
+</button>
+
+</div>
+
+<div class="online">
+<span class="dot"></span>
+Система доступна
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section" id="how">
+
+<div class="title">
+
+<h2>Как работает SERVERHUB?</h2>
+
+<p>
+Сервер остаётся у тебя. SERVERHUB предоставляет
+систему управления и подключения.
+</p>
+
+</div>
+
+
+<div class="cards">
+
+<div class="card">
+
+<div class="icon">📱</div>
+
+<h3>Твоё устройство</h3>
+
+<p>
+Minecraft-сервер хранится на твоём ПК
+или дополнительном телефоне.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🔗</div>
+
+<h3>Наш Agent</h3>
+
+<p>
+Специальная программа связывает твой сервер
+с панелью управления SERVERHUB.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">🎮</div>
+
+<h3>Твои игроки</h3>
+
+<p>
+Игроки подключаются к твоему серверу,
+а ты управляешь им через панель.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="flow">
+
+<div class="flow-box">
+<strong>📱 ТВОЁ УСТРОЙСТВО</strong>
+<span>Здесь находится сервер</span>
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-box">
+<strong>⚡ SERVERHUB</strong>
+<span>Панель управления</span>
+</div>
+
+<div class="arrow">→</div>
+
+<div class="flow-box">
+<strong>👥 ИГРОКИ</strong>
+<span>Подключаются к серверу</span>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section" id="plans">
+
+<div class="title">
+
+<h2>Выбери свой тариф</h2>
+
+<p>
+Начни бесплатно или получи больше возможностей
+с подпиской.
+</p>
+
+</div>
+
+
+<div class="pricing">
+
+
+<div class="price-card">
+
+<h3>FREE</h3>
+
+<div class="price">
+0 ₽ <small>/ месяц</small>
+</div>
+
+<ul class="features">
+<li>Сервер на твоём устройстве</li>
+<li>До 12 часов работы</li>
+<li>Перерыв 2 часа</li>
+<li>Базовое управление</li>
+<li>Личный кабинет</li>
+</ul>
+
+<button class="price-btn"
+onclick="showMessage('Регистрация будет доступна следующим обновлением')">
+НАЧАТЬ
+</button>
+
+</div>
+
+
+<div class="price-card featured">
+
+<div class="popular">
+ПОПУЛЯРНЫЙ
+</div>
+
+<h3>PLUS</h3>
+
+<div class="price">
+299 ₽ <small>/ месяц</small>
+</div>
+
+<ul class="features">
+<li>Расширенный режим работы</li>
+<li>Полное управление</li>
+<li>Расширенная статистика</li>
+<li>Автоматизация</li>
+<li>Дополнительные функции</li>
+</ul>
+
+<button class="price-btn"
+onclick="showMessage('Оплата будет подключена позже')">
+ПОДКЛЮЧИТЬ
+</button>
+
+</div>
+
+
+<div class="price-card">
+
+<h3>PRO</h3>
+
+<div class="price">
+499 ₽ <small>/ месяц</small>
+</div>
+
+<ul class="features">
+<li>Максимальные возможности</li>
+<li>Расширенное управление</li>
+<li>Полная статистика</li>
+<li>Расширенная автоматизация</li>
+<li>Несколько серверов</li>
+</ul>
+
+<button class="price-btn"
+onclick="showMessage('Оплата будет подключена позже')">
+ПОДКЛЮЧИТЬ
+</button>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<section class="section" id="about">
+
+<div class="title">
+
+<h2>Почему SERVERHUB?</h2>
+
+<p>
+Мы делаем систему, в которой пользователь
+сохраняет контроль над своим сервером.
+</p>
+
+</div>
+
+
+<div class="cards">
+
+<div class="card">
+
+<div class="icon">🔐</div>
+
+<h3>Твои файлы</h3>
+
+<p>
+Мир и серверные файлы находятся
+на твоём собственном устройстве.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">⚙️</div>
+
+<h3>Управление</h3>
+
+<p>
+Запуск, остановка и настройки сервера
+будут доступны из одной панели.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">📊</div>
+
+<h3>Контроль</h3>
+
+<p>
+Следи за нагрузкой, игроками и состоянием
+сервера в реальном времени.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<div class="cta">
+
+<h2>Готов попробовать?</h2>
+
+<p>
+Начни с бесплатного тарифа SERVERHUB.
+</p>
+
+<button class="btn primary"
+onclick="showMessage('Система регистрации находится в разработке')">
+СОЗДАТЬ АККАУНТ
+</button>
+
+</div>
+
+
+<footer>
+
+<div>
+<strong>SERVERHUB</strong><br>
+Minecraft Server Platform
+</div>
+
+<div>
+© 2026 SERVERHUB
+</div>
+
+</footer>
+
 
 <script>
-function notice(message){
-  alert(message);
+
+function scrollToId(id){
+const element=document.getElementById(id);
+if(element){
+element.scrollIntoView({behavior:"smooth"});
 }
+}
+
+function showMessage(text){
+alert(text);
+}
+
 </script>
+
 </body>
 </html>
